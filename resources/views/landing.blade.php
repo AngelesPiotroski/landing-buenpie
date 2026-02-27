@@ -6,6 +6,10 @@
     <title>El Buen Pie | Clínica especializada en láser en Tijuana</title>
     <meta name="description" content="Clínica No. 1 especializada en láser en Tijuana. Tratamiento láser 4K contra la onicomicosis. Pedicure médico frecuente. Sucursales en 4 puntos de la ciudad." />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;1,500;1,600&display=swap" rel="stylesheet">
+
     <style>
         :root{
             --bg: #0b1220;
@@ -254,8 +258,20 @@
             backdrop-filter: blur(12px);
         }
         .float-btn:hover{background: rgba(255,255,255,.12)}
-        .float-btn.call{outline: 2px solid rgba(71,167,255,.18)}
-        .float-btn.wa{outline: 2px solid rgba(51,230,178,.16)}
+        .float-btn.call{
+            outline: 2px solid rgba(71,167,255,.18);
+            color: #47a7ff;
+        }
+        .float-btn.call svg{
+            fill: #47a7ff;
+        }
+        .float-btn.wa{
+            outline: 2px solid rgba(51,230,178,.16);
+            color: #25D366;
+        }
+        .float-btn.wa svg{
+            fill: #25D366;
+        }
 
         /* Chat widget */
         .chat{
@@ -349,6 +365,36 @@
             font-style: italic;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
+        }
+
+        .casos-reales-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .caso-real-item {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .caso-real-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+
+        .caso-real-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .footer-section {
             background: #EDEDED;
@@ -449,10 +495,32 @@
         }
 
         .footer-bottom {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
             padding: 25px 20px;
             font-size: 14px;
             color: #4A4A4A;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-bottom-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .contact-section {
             background: #EDEDED;
@@ -494,7 +562,7 @@
 
         .contact-row label {
             width: 280px;
-            font-size: 26px;
+            font-size: 20px;
             font-weight: 500;
             color: #3F6287;
             font-family: 'Poppins', sans-serif;
@@ -529,7 +597,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
         }
         .contact-input,
@@ -540,11 +608,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 16px;
+            font-size: 20px;
             color: #3F6287;
             font-weight: 500;
             cursor: pointer;
             white-space: nowrap;
+            flex: 0 1 auto;
+            min-width: 0;
         }
 
         .radio-option input {
@@ -552,15 +622,32 @@
         }
 
         .custom-check {
-            width: 14px;
-            height: 14px;
-            background: #3F6287;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #3F6287;
+            border-radius: 50%;
+            background: transparent;
             display: inline-block;
+            position: relative;
+            flex-shrink: 0;
         }
 
         /* Estado seleccionado */
         .radio-option input:checked + .custom-check {
-            background: #2e4b68;
+            background: #3F6287;
+            border-color: #3F6287;
+        }
+
+        .radio-option input:checked + .custom-check::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
         }
 
 
@@ -756,8 +843,31 @@
 
             .contact-radio-wrapper.single-row {
                 justify-content: flex-start;
+                padding: 15px 20px;
+                gap: 20px;
             }
 
+            .radio-option {
+                font-size: 14px;
+                white-space: normal;
+                flex: 1 1 calc(50% - 10px);
+                min-width: 160px;
+            }
+
+        }
+
+        @media (max-width: 576px) {
+            .contact-radio-wrapper.single-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .radio-option {
+                flex: 1 1 100%;
+                width: 100%;
+                min-width: 100%;
+            }
         }
         @media (max-width: 992px) {
             .navbar-container {
@@ -819,8 +929,6 @@
             <!-- Menu -->
             <nav class="navbar-menu">
                 <a href="#home" class="nav-link active">HOME</a>
-                <a href="#laser" class="nav-link">LÁSER</a>
-                <a href="#pedicure" class="nav-link">PEDICURE</a>
             </nav>
 
             <!-- Chat Button -->
@@ -884,23 +992,38 @@
         <!-- Imagen completa -->
         <img src="{{ asset('images/doctor-section.jpg') }}" alt="Brindamos bienestar para tus pies">
 
-        <!-- Botón llamar -->
-        <a href="tel:+526647314805" class="doctor-call" aria-label="Llamar">
-            <svg viewBox="0 0 24 24" fill="white">
-                <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.7.6 4.1.6.7 0 1.2.5 1.2 1.2V21c0 .7-.5 1.2-1.2 1.2C10.3 22.2 1.8 13.7 1.8 3.2 1.8 2.5 2.3 2 3 2h3.7c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.8.6 4.1.1.4 0 .9-.3 1.2l-2.2 2.3z"/>
-            </svg>
-            Llámanos
-        </a>
-
-        <!-- Botón WhatsApp -->
-        <a href="https://wa.me/526647314805" target="_blank" class="doctor-wa" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="white">
-                <path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.2-1.3A10 10 0 1 0 12 2z"/>
-            </svg>
-            WhatsApp
-        </a>
-
     </div>
+
+    </section>
+
+
+
+    <section class="beneficios-section">
+
+        <h2 class="beneficios-title">Casos Reales:</h2>
+
+        <div class="casos-reales-grid">
+            <!-- Caso Real 1 -->
+            <div class="caso-real-item">
+                <img src="{{ asset('images/caso-real-1.jpg') }}" alt="Caso Real 1">
+            </div>
+
+            <!-- Caso Real 2 -->
+            <div class="caso-real-item">
+                <img src="{{ asset('images/caso-real-2.jpg') }}" alt="Caso Real 2">
+            </div>
+
+            <!-- Caso Real 3 -->
+            <div class="caso-real-item">
+                <img src="{{ asset('images/caso-real-3.jpg') }}" alt="Caso Real 3">
+            </div>
+
+            <!-- Caso Real 4 -->
+            <div class="caso-real-item">
+                <img src="{{ asset('images/caso-real-4.jpg') }}" alt="Caso Real 4">
+            </div>
+
+        </div>
 
     </section>
 
@@ -922,8 +1045,8 @@
 
                 <circle cx="110" cy="110" r="75" fill="#8E4A97" />
 
-                <text font-size="18" fill="#4a4a4a" font-weight="600">
-                    <textPath href="#circlePath1" startOffset="50%" text-anchor="middle">
+                <text font-family="Poppins" font-size="14" fill="#4a4a4a" font-weight="600">
+                    <textPath href="#circlePath1" startOffset="20%" text-anchor="middle">
                         Elimina callosidades
                     </textPath>
                 </text>
@@ -940,8 +1063,8 @@
 
                 <circle cx="110" cy="110" r="75" fill="#8E4A97" />
 
-                <text font-size="18" fill="#4a4a4a" font-weight="600">
-                    <textPath href="#circlePath2" startOffset="50%" text-anchor="middle">
+                <text font-family="Poppins" font-size="14" fill="#4a4a4a" font-weight="600">
+                    <textPath href="#circlePath2" startOffset="20%" text-anchor="middle">
                         Promueve la circulación sanguínea
                     </textPath>
                 </text>
@@ -958,8 +1081,8 @@
 
                 <circle cx="110" cy="110" r="75" fill="#8E4A97" />
 
-                <text font-size="18" fill="#4a4a4a" font-weight="600">
-                    <textPath href="#circlePath3" startOffset="50%" text-anchor="middle">
+                <text font-family="Poppins" font-size="14" fill="#4a4a4a" font-weight="600">
+                    <textPath href="#circlePath3" startOffset="20%" text-anchor="middle">
                         Recupera tu bienestar
                     </textPath>
                 </text>
@@ -976,8 +1099,8 @@
 
                 <circle cx="110" cy="110" r="75" fill="#8E4A97" />
 
-                <text font-size="18" fill="#4a4a4a" font-weight="600">
-                    <textPath href="#circlePath4" startOffset="50%" text-anchor="middle">
+                <text font-family="Poppins" font-size="14" fill="#4a4a4a" font-weight="600">
+                    <textPath href="#circlePath4" startOffset="20%" text-anchor="middle">
                         Mejora tu apariencia
                     </textPath>
                 </text>
@@ -1007,73 +1130,7 @@
 </section>
 
 
-    <section id="pedicure" class="section">
-        <div class="container">
-            <h2>Pedicure Médico</h2>
-            <div class="panel" style="padding:18px">
-                <div class="grid-3">
-                    <div class="card">
-                        <h3>Recupera el bienestar de tus pies</h3>
-                        <p class="quote">Con un Pedicure Médico frecuente, mejorá tu salud podológica de forma continua.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Enfoque clínico + cuidado humano</h3>
-                        <p class="quote">Combinamos experiencia, tecnología y atención cercana para acompañarte.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Seguimiento y recomendaciones</h3>
-                        <p class="quote">Te orientamos para mantener resultados y prevenir molestias.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sucursales" class="section">
-        <div class="container">
-            <h2>Ubicados estratégicamente en 4 puntos de la ciudad</h2>
-            <p class="sub" style="margin-top:-6px">Encuentra la sucursal más cercana.</p>
-
-            <div class="branches">
-                @foreach($branches as $i => $b)
-                    <button class="branch {{ $i === 0 ? 'active' : '' }}" type="button" data-branch="{{ $b['slug'] }}">
-                        {{ $b['name'] }}
-                    </button>
-                @endforeach
-            </div>
-
-            <div style="height:12px"></div>
-
-            <div class="panel" style="padding:16px">
-                <div class="grid-3">
-                    <div class="card">
-                        <h3>Dirección Matriz</h3>
-                        <p class="quote">{{ $contact['address'] }}</p>
-                    </div>
-                    <div class="card">
-                        <h3>Horarios de atención</h3>
-                        <p class="quote" style="margin:0">
-                            @foreach($contact['hours'] as $h)
-                                {{ $h }}<br/>
-                            @endforeach
-                        </p>
-                    </div>
-                    <div class="card">
-                        <h3>Contáctenos</h3>
-                        <p class="quote" style="margin:0">
-                            Teléfono: {{ $contact['phone_display'] }}<br/>
-                            WhatsApp: {{ $contact['phone_display'] }}<br/>
-                            Correo: {{ $contact['email'] }}
-                        </p>
-                    </div>
-                </div>
-                <p class="help" style="margin-top:12px">
-                    *Si querés que cada botón (Insurgentes/Otay/Centro/Playas) muestre su dirección exacta y un mapa, pasame las direcciones por sucursal y lo conecto (Google/Leaflet/OpenStreetMap).
-                </p>
-            </div>
-        </div>
-    </section>
-
+  
     <section class="contact-section">
 
     <div class="contact-card">
@@ -1171,11 +1228,6 @@
             <strong>Teléfono:</strong> 664-731-4805<br>
             <strong>WhatsApp:</strong> 664-731-4805.<br>
             <strong>Correo electrónico:</strong> elbuenpie.tijuana@gmail.com</p>
-
-            <div class="footer-logo">
-                <img src="{{ asset('images/logo-buenpie.png') }}" alt="Buen Pie Logo">
-            </div>
-
         </div>
 
 
@@ -1229,11 +1281,14 @@
 
     <!-- Políticas -->
     <div class="footer-bottom">
-        POLÍTICA DE PRIVACIDAD
-        &nbsp;&nbsp;&nbsp;
-        TÉRMINOS Y CONDICIONES
-        &nbsp;&nbsp;&nbsp;
-        POLÍTICA DE CALIDAD, INOCUIDAD Y GESTIÓN AMBIENTAL
+        <div class="footer-bottom-logo">
+            <img src="{{ asset('images/logo-buenpie.png') }}" alt="Buen Pie Logo">
+        </div>
+        <div class="footer-bottom-links">
+            <span>POLÍTICA DE PRIVACIDAD</span>
+            <span>TÉRMINOS Y CONDICIONES</span>
+            <span>POLÍTICA DE CALIDAD, INOCUIDAD Y GESTIÓN AMBIENTAL</span>
+        </div>
     </div>
 
 </footer>
@@ -1241,8 +1296,16 @@
 
     <!-- Floating buttons -->
     <div class="float-wrap" aria-label="Accesos rápidos">
-        <a class="float-btn call" href="tel:+{{ $contact['phone_link'] }}" title="Llámanos" aria-label="Llámanos">📞</a>
-        <a class="float-btn wa" href="{{ $contact['whatsapp_link'] }}" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">💬</a>
+        <a class="float-btn call" href="tel:+{{ $contact['phone_link'] }}" title="Llámanos" aria-label="Llámanos">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+        </a>
+        <a class="float-btn wa" href="{{ $contact['whatsapp_link'] }}" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+        </a>
     </div>
 
     <!-- Chat widget -->
